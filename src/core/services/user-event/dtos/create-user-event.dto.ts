@@ -1,6 +1,6 @@
 export interface CreateUserEventDto {
-    userId: number;
-    eventId: number;
-    isReceivingPost: boolean;
-    isReceivingComment: boolean;
+    user_id: number;
+    event_id: number;
+    is_receiving_post: boolean;
+    is_receiving_comment: boolean;
 }

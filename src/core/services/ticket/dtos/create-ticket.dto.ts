@@ -1,5 +1,5 @@
 export interface CreateTicketDto {
-    userId: number;
-    eventId: number;
-    uuid: number;
+    user_id: number;
+    event_id: number;
+    uuid: string;
 }

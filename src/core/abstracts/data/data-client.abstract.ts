@@ -1,4 +1,4 @@
-import { Category, Comment, Company, CompanyUser, Event, Post, Ticket, UserEvent } from '../../entities';
+import { Category, Comment, Event, Post, Ticket, UserEvent } from '../../entities';
 import { IRepository } from './repository.abstract';
 //import { IUserRepository } from './user-repository.abstract';
 
@@ -9,8 +9,6 @@ import { IRepository } from './repository.abstract';
 export abstract class IDataClient {
     abstract category: IRepository<Category>;
     abstract comment: IRepository<Comment>;
-    abstract company: IRepository<Company>;
-    abstract companyUser: IRepository<CompanyUser>;
     abstract event: IRepository<Event>;
     abstract post: IRepository<Post>;
     abstract ticket: IRepository<Ticket>;

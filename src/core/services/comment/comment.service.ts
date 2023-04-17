@@ -16,8 +16,8 @@ export class CommentService implements ITransactable {
   public async createComment(commentDto: CreateCommentDto, @DataClient() dataClient?: IDataClient): Promise<Comment> {
     const commentDraft: Comment = {
       ...commentDto,
-      createdAt: new Date(),
-      deletedAt: null
+      created_at: new Date(),
+      deleted_at: null
     };
     const comment = await dataClient.comment.create(commentDraft);
     return comment;

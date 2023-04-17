@@ -1,6 +1,6 @@
 export interface CreatePostDto {
-    eventId: number;
-    imageUrl?: string;
+    event_id: number;
+    image_url?: string;
     title: string;
     content: string;
 }

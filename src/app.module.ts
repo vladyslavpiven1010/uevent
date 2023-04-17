@@ -2,10 +2,8 @@ import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { CoreModule } from './core/core.module';
 import { 
-  commentController,
+  CategoryController,
   CommentController,
-  CompanyController,
-  CompanyUserController,
   EventController,
   PostController,
   TicketController,
@@ -13,12 +11,10 @@ import {
 } from './controllers';
 
 @Module({
-  imports: [ConfigModule.forRoot({ isGlobal: true }), CoreModule],
+  imports: [CoreModule, ConfigModule.forRoot({ isGlobal: true })],
   controllers: [
-    commentController, 
-    CommentController, 
-    CompanyController, 
-    CompanyUserController, 
+    CategoryController, 
+    CommentController,
     EventController, 
     PostController, 
     TicketController, 

@@ -1,7 +1,5 @@
 export * from './category/category.controller'
 export * from './comment/comment.controller'
-export * from './company/company.controller'
-export * from './company-user/company-user.controller'
 export * from './event/event.controller'
 export * from './post/post.controller'
 export * from './ticket/ticket.controller'

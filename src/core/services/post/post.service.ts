@@ -16,9 +16,9 @@ export class PostService implements ITransactable {
   public async createPost(postDto: CreatePostDto, @DataClient() dataClient?: IDataClient): Promise<Post> {
     const postDraft: Post = {
       ...postDto,
-      createdAt: new Date(),
-      updatedAt: new Date(),
-      deletedAt: null
+      created_at: new Date(),
+      updated_at: new Date(),
+      deleted_at: null
     };
     const post = await dataClient.post.create(postDraft);
     return post;

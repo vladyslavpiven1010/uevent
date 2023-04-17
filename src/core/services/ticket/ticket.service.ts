@@ -4,6 +4,7 @@ import { BadRequestException, Injectable, NotFoundException } from '@nestjs/comm
 import { DataClient, ITransactable, Transaction } from '../../utils';
 import { CreateTicketDto, UpdateTicketDto } from './dtos';
 import { QueryOptions } from 'src/core/abstracts';
+import { v4 as uuidv4 } from 'uuid';
 
 /**
  * Class that represents ticket service. It contains business logic.
@@ -14,8 +15,11 @@ export class TicketService implements ITransactable {
 
   @Transaction()
   public async createTicket(ticketDto: CreateTicketDto, @DataClient() dataClient?: IDataClient): Promise<Ticket> {
+    const countTicket = await dataClient.ticket.countTicket(ticketDto.event_id);
+    if (countTicket >= 50) throw new BadRequestException('All tickets was sold');
     const ticketDraft: Ticket = {
-      ...ticketDto
+      ...ticketDto,
+      uuid: uuidv4()
     };
     const ticket = await dataClient.ticket.create(ticketDraft);
     return ticket;

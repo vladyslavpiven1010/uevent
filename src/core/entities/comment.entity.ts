@@ -5,10 +5,10 @@ import * as moment from 'moment';
  * Entity interface that represents comment.
  */
 export interface Comment extends Entity {
-  userId: number;
-  eventId: number;
-  replyToId: number;
+  user_id: number;
+  event_id: number;
+  reply_to_id?: number;
   content: string;
-  createdAt: Date;
-  deletedAt: Date;
+  created_at: Date;
+  deleted_at?: Date;
 }

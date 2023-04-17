@@ -1,6 +1,5 @@
 import { Pool } from 'pg';
 import { IDataProvider } from 'src/core/abstracts';
-import { PgRepository } from './pg-repository';
 import { Injectable, Logger } from '@nestjs/common';
 import { exit } from 'process';
 import { ConfigService } from '@nestjs/config';

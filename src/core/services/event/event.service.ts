@@ -15,7 +15,10 @@ export class EventService implements ITransactable {
   @Transaction()
   public async createEvent(eventDto: CreateEventDto, @DataClient() dataClient?: IDataClient): Promise<Event> {
     const eventDraft: Event = {
-      ...eventDto
+      ...eventDto,
+      created_at: new Date(),
+      deleted_at: null,
+      //date: new Date(eventDto.date)
     };
     const Event = await dataClient.event.create(eventDraft);
     return Event;

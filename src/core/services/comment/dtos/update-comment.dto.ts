@@ -1,6 +1,6 @@
 export interface UpdateCommentDto {
-  userId?: number;
-  eventId?: number;
-  replyToId?: number;
-  content?: string;
+    user_id?: number;
+    event_id?: number;
+    reply_to_id?: number;
+    content?: string;
 }

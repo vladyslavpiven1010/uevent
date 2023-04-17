@@ -1,13 +1,11 @@
 import { PoolClient } from 'pg';
 import { IDataClient, IRepository } from 'src/core/abstracts';
-import { Category, Comment, Company, CompanyUser, Event, Post, Ticket, UserEvent } from 'src/core/entities';
+import { Category, Comment, Event, Post, Ticket, UserEvent } from 'src/core/entities';
 import { PgRepository } from './pg-repository';
 
 export class PgDataClient implements IDataClient {
   public category: IRepository<Category>;
   public comment: IRepository<Comment>;
-  public company: IRepository<Company>;
-  public companyUser: IRepository<CompanyUser>;
   public event: IRepository<Event>;
   public post: IRepository<Post>;
   public ticket: IRepository<Ticket>;
@@ -19,8 +17,6 @@ export class PgDataClient implements IDataClient {
   constructor(private _client: PoolClient) {
     this.category = new PgRepository<Category>(this._client, { table: 'category', verbose: 'Category' });
     this.comment = new PgRepository<Comment>(this._client, { table: 'comment', verbose: 'Comment' });
-    this.company = new PgRepository<Company>(this._client, { table: 'company', verbose: 'Company' });
-    this.companyUser = new PgRepository<CompanyUser>(this._client, { table: 'company_user', verbose: 'Company User' });
     this.event = new PgRepository<Event>(this._client, { table: 'event', verbose: 'Event' });
     this.post = new PgRepository<Post>(this._client, { table: 'post', verbose: 'Post' });
     this.ticket = new PgRepository<Ticket>(this._client, { table: 'ticket', verbose: 'Ticket' });

@@ -18,10 +18,11 @@ export class CategoryService implements ITransactable {
    * @returns
    */
   @Transaction()
-  public async createCategory(name: string, @DataClient() dataClient?: IDataClient): Promise<Category> {
+  public async createCategory(categoryCreate: CreateCategoryDto, @DataClient() dataClient?: IDataClient): Promise<Category> {
     const categoryDraft: Category = {
-      name: name
+      name: categoryCreate.name
     };
+    //console.log(categoryDraft)
     const category = await dataClient.category.create(categoryDraft);
     return category;
   }
@@ -33,7 +34,7 @@ export class CategoryService implements ITransactable {
     return category;
   }
 
-  @Transaction()
+  //@Transaction()
   public async getAllCategories(@DataClient() dataClient?: IDataClient): Promise<Category[]> {
     const category = await dataClient.category.findAll({});
     return category;

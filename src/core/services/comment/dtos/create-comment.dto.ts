@@ -1,6 +1,6 @@
 export interface CreateCommentDto {
-    userId: number;
-    eventId: number;
-    replyToId: number;
+    user_id: number;
+    event_id: number;
+    reply_to_id?: number;
     content: string;
 }

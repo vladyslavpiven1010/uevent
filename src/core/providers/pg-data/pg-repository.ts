@@ -14,6 +14,7 @@ export class PgRepository<T extends Entity> implements IRepository<T> {
   public async findAll(options: QueryOptions): Promise<T[]> {
     const optionsQuery = this._optionsToQuery(options);
     const query = `SELECT * FROM "${this._table}" ${optionsQuery}`;
+    console.log(query)
     const res = await this.pool.query(query, []);
     return res.rows;
   }
@@ -40,6 +41,8 @@ export class PgRepository<T extends Entity> implements IRepository<T> {
       .map((value, index) => `$${index + 1}`)
       .join(', ');
     const query = `INSERT INTO "${this._table}" (${keys}) VALUES (${valuesTemplate}) RETURNING *`;
+    console.log(query)
+    console.log(values)
     const res = await this.pool.query(query, values);
     return res.rows[0];
   }
@@ -72,7 +75,15 @@ export class PgRepository<T extends Entity> implements IRepository<T> {
       .join(', ');
     const values = Object.values(item);
     const query = `UPDATE "${this._table}" SET ${keysTemplate} WHERE "id"='${id}' RETURNING *`;
+    console.log(id)
+    //console.log(values)
     const res = await this.pool.query(query, values);
+    return res.rows[0];
+  }
+
+  public async countTicket(eventId: number): Promise<number> {
+    const query = `SELECT count(*) FROM "ticket" WHERE "event_id"='${eventId}'`;
+    const res = await this.pool.query(query, []);
     return res.rows[0];
   }
 

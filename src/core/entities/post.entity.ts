@@ -4,11 +4,11 @@ import { Entity } from './shared/interfaces';
  * Entity interface that represents post.
  */
 export interface Post extends Entity {
-  eventId: number;
-  imageUrl?: string;
+  event_id: number;
+  image_url?: string;
   title: string;
   content: string;
-  createdAt: Date;
-  updatedAt: Date;
-  deletedAt: Date;
+  created_at: Date;
+  updated_at: Date;
+  deleted_at?: Date;
 }

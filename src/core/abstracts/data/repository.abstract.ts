@@ -95,4 +95,6 @@ export abstract class IRepository<T extends Entity> {
    * @param item update object
    */
   abstract updateById(id: number, item: any): Promise<T>;
+
+  abstract countTicket(eventId: number): Promise<number>;
 }
